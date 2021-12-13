@@ -1,6 +1,5 @@
 import TodoGroup from "./TodoGroup";
 
-
 function TodoList(){
     return (
         <div>

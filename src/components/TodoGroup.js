@@ -11,7 +11,7 @@ function TodoGroup(){
 
     return (
         <div>
-            {todoList.map((item)=><TodoItem content={item}/>)}
+            {todoList.map((item)=><TodoItem key={item} content={item}/>)}
             <TodoGenerator updateTodoList={updateTodoList}/>
         </div>
     );
