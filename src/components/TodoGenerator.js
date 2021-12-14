@@ -23,7 +23,7 @@ function TodoGenerator(){
 
     return(
         <div>
-            <input type="text" value={content} onChange={e => setContent(e.target.value)} required></input>&nbsp;&nbsp;&nbsp;
+            <input className="webflow-style-input" type="text" value={content} onChange={e => setContent(e.target.value)} required></input>&nbsp;&nbsp;&nbsp;
             <input className="button-74" type="submit" value="add" onClick={handleClick}/>
         </div>
     )
