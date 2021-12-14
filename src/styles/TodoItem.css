@@ -19,6 +19,10 @@ input[type=text], select {
     box-sizing: border-box;
   }
 
+.checkbox{
+  float: left;
+}
+
   .button-74 {
     background-color: #fbeee0;
     border: 2px solid #422800;
@@ -39,7 +43,8 @@ input[type=text], select {
   }
   
   .button-74:hover {
-    background-color: #fff;
+    background-color: rgb(24, 214, 50);
+    color: azure;
   }
   
   .button-74:active {
@@ -52,4 +57,53 @@ input[type=text], select {
       min-width: 120px;
       padding: 0 25px;
     }
+  }
+
+  .button {
+    float: right;
+    background-color: #a72d37;
+    width: 100px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    animation: bn53bounce 4s infinite;
+    cursor: pointer;
+  }
+  
+  @keyframes bn53bounce {
+    5%,
+    50% {
+      transform: scale(1);
+    }
+  
+    10% {
+      transform: scale(1);
+    }
+  
+    15% {
+      transform: scale(1);
+    }
+  
+    20% {
+      transform: scale(1) rotate(-5deg);
+    }
+  
+    25% {
+      transform: scale(1) rotate(5deg);
+    }
+  
+    30% {
+      transform: scale(1) rotate(-3deg);
+    }
+  
+    35% {
+      transform: scale(1) rotate(2deg);
+    }
+  
+    40% {
+      transform: scale(1) rotate(0);
+    }
+  }
+
+
+  .deleteLine{
+    text-decoration:line-through;
   }
