@@ -2,6 +2,7 @@ import { useState } from "react";
 import '../styles/TodoItem.css'
 import { useDispatch } from "react-redux";
 import { ADDTODO } from "../redux/constants.js";
+import _uniqueId from 'lodash/uniqueId';
 
 function TodoGenerator(){
     const dispatch = useDispatch();
@@ -10,7 +11,10 @@ function TodoGenerator(){
         if (content.length>0){
             dispatch({
                 type: ADDTODO,
-                content: content
+                payload: {
+                    content:content,
+                    id:_uniqueId('todo-list-')
+                }
             })
             setContent("")
         }

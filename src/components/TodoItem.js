@@ -3,7 +3,7 @@ import '../styles/TodoItem.css'
 function TodoItem(props){
     return(
         <div>
-            <p>{props.content}</p>
+            <p>{props.content} </p>
         </div>
     );
 }

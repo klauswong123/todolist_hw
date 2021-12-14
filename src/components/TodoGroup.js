@@ -6,7 +6,7 @@ function TodoGroup(){
     const todo = useSelector((state) => state);
     return (
         <div>
-            {todo.map((item,index)=><TodoItem key={index} content={item}/>)}
+            {todo.map((item,index)=><TodoItem key={index} content={item.content}/>)}
             <TodoGenerator/>
         </div>
     );
