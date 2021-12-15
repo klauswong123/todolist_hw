@@ -29,15 +29,19 @@ input[type=text], select {
     box-sizing: border-box;
   }
 
+.todoItem{
+  background-color: white;
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
  p{
-   background-color: white;
-    width: 60%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 2px solid black;
-    border-radius: 4px;
-    box-sizing: border-box;
+
   }
 
 .checkbox{
@@ -83,6 +87,25 @@ input[type=text], select {
   .button {
     float: right;
     background-color: #cc5f20;
+    width: 100px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    animation: bn53bounce 4s infinite;
+    cursor: pointer;
+    color: whitesmoke;
+  }
+  .deleteButton {
+    float: right;
+    background-color: #cc5f20;
+    width: 100px;
+    margin-left: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    animation: bn53bounce 4s infinite;
+    cursor: pointer;
+    color: whitesmoke;
+  }
+  .updateButton {
+    float: right;
+    background-color: #5dd663;
     width: 100px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     animation: bn53bounce 4s infinite;

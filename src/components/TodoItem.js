@@ -1,10 +1,21 @@
 import '../styles/TodoItem.css'
+import '../styles/updateItem.css'
 import { useDispatch } from "react-redux";
-import { REMOVE_TODO, DONE, CHANGE_STATUS, UNDONE } from "../redux/constants.js";
+import { REMOVE_TODO, DONE, CHANGE_STATUS, UNDONE, UPDATE_TODO } from "../redux/constants.js";
 import {removeTodoAPI, toggleStatusAPI} from "../apis/todos";
+import { useEffect, useState } from 'react';
+import { Modal, Button, Input } from 'antd';
+
 
 function TodoItem(props){
     const dispatch = useDispatch();
+    const [visible, setVisible] = useState(false)
+    const [content, setContent] = useState("")
+
+    useEffect(()=>{
+        setContent(props.TODO.content);
+    },[])
+
     function removeTodo(event){
         event.stopPropagation();
         removeTodoAPI(props.TODO.id)
@@ -20,27 +31,58 @@ function TodoItem(props){
             status: TodoStatus!==DONE?DONE:UNDONE
         }
         toggleStatusAPI(props.TODO.id, data)
-        .then(
+        .then(  Response =>
             dispatch({
                 type: CHANGE_STATUS,
                 payload: {
-                    id: props.TODO.id,
-                    status: data.status
+                    id: Response.data.id,
+                    status: Response.data.status
                 }
             })
         )
-
-
     }
+
+    function updateTodo(){
+        const data ={
+            content: ''+content.toString()
+        }
+        toggleStatusAPI(props.TODO.id, data)
+        .then( Response=>{
+            dispatch({
+                type: UPDATE_TODO,
+                payload: {
+                    id: Response.data.id,
+                    content: Response.data.content
+                }
+            })
+        }
+        ).then(setVisible(false))
+    }
+
+    function turnVisible(){
+        setVisible(true)
+    }
+
     return(
-        <div>
-            <p className={
+        <div className='todoItem'>
+            <Modal
+                title="Modal"
+                visible={visible}
+                onOk={()=>updateTodo()}
+                onCancel={()=>setVisible(false)}
+                okText="Update"
+                cancelText="Cancel"
+                >
+                <Input.TextArea placeholder={props.TODO.content} className="updateinput" value={content} onChange={event => setContent(event.target.value)} ></Input.TextArea>
+            </Modal>
+            <span className={
                 props.TODO.status===DONE?"deleteLine":""
             } onClick={()=>ToggleStatus(props.TODO.status)}>  
                 {props.TODO.content} 
-                <input className="button" type="submit" value="delete" onClick={event=>removeTodo(event)}/>
-            </p>
-            
+                
+            </span>
+            <input className="deleteButton" type="button" value="delete" onClick={event=>removeTodo(event)}/>
+            <input className="updateButton" type="button" value="update" onClick={()=>setVisible(true)} />  
         </div>
     );
 }

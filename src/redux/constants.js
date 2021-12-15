@@ -4,3 +4,5 @@ export const DONE="todo/DONE";
 export const UNDONE="todo/UNDONE";
 export const CHANGE_STATUS = "todo/CHANGE_STATUS"
 export const INIT_TODO = "todo/INIT_TODO"
+export const UPDATE_TODO="todo/UPDATE_TODO"
+export const PageSize=8;

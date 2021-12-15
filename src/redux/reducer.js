@@ -1,4 +1,4 @@
-import { ADD_TODO, REMOVE_TODO,CHANGE_STATUS, INIT_TODO } from "./constants";
+import { ADD_TODO, REMOVE_TODO,CHANGE_STATUS, INIT_TODO, UPDATE_TODO } from "./constants";
 const reducer = (state=[], action) =>{
     switch(action.type){
         case ADD_TODO:
@@ -16,6 +16,15 @@ const reducer = (state=[], action) =>{
                 }
                 return item
               })
+        case UPDATE_TODO:
+            return state.map((item) => {
+                if (item.id === action.payload.id) {
+                    return Object.assign({}, item, {
+                        content: action.payload.content
+                        })
+                }
+                return item
+                })
         default:
             return state
     }
