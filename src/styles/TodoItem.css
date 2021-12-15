@@ -1,5 +1,5 @@
 body {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background: linear-gradient(-45deg, #eb9d85, #b0f1d3, #afedf1, #eea9e2);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 	height: 100vh;
@@ -22,7 +22,7 @@ input[type=text], select {
     width: 25%;
     height: 50px;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 8px 20px;
     display: inline-block;
     border: 3px solid #ccc;
     border-radius: 4px;
@@ -141,3 +141,6 @@ input[type=text], select {
   .webflow-style-input::-webkit-input-placeholder {
     color: #BFD2FF;
   }
+
+
+  h2 { color: #d54d7b; font-family: "Great Vibes", cursive; font-size: 45px; line-height: 60px; font-weight: normal; margin-bottom: 20px; margin-top: 20px; text-align: center; text-shadow: 0 1px 1px #fff; }

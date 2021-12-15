@@ -1,23 +1,18 @@
-import { ADDTODO, REMOVETODO, DONE, UNDONE,CHANGESTATUS } from "./constants";
+import { ADD_TODO, REMOVE_TODO,CHANGE_STATUS, INIT_TODO } from "./constants";
 const reducer = (state=[], action) =>{
     switch(action.type){
-        case ADDTODO:
+        case ADD_TODO:
             return state.concat(action.payload);
-        case REMOVETODO:
-                return state.filter((item) => item.id !== action.payload)
-        case CHANGESTATUS:
+        case REMOVE_TODO:
+            return state.filter((item) => item.id !== action.payload)
+        case INIT_TODO:
+            return action.payload;
+        case CHANGE_STATUS:
             return state.map((item) => {
-                if (item.id === action.payload) {
-                    if (item.status===DONE){
-                        return Object.assign({}, item, {
-                            status: UNDONE
-                          })
-                    }
-                    if (item.status===UNDONE){
-                        return Object.assign({}, item, {
-                            status: DONE
-                          })
-                    }
+                if (item.id === action.payload.id) {
+                    return Object.assign({}, item, {
+                        status: action.payload.status
+                        })
                 }
                 return item
               })

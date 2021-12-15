@@ -1,29 +1,33 @@
 import { useState } from "react";
 import '../styles/TodoItem.css'
 import { useDispatch } from "react-redux";
-import { ADDTODO, UNDONE } from "../redux/constants.js";
-import _uniqueId from 'lodash/uniqueId';
-
+import { ADD_TODO, UNDONE } from "../redux/constants.js";
+import {addTodoAPI} from "../apis/todos";
 function TodoGenerator(){
     const dispatch = useDispatch();
     const [content, setContent] = useState("")
     const handleClick = () => {
         if (content.length>0){
-            dispatch({
-                type: ADDTODO,
+            const data ={
+                "content":content,
+                "status":UNDONE
+            }
+            addTodoAPI(data).then( Response => dispatch({
+                type: ADD_TODO,
                 payload: {
-                    content:content,
-                    id:_uniqueId('todo-list-'),
+                    content:Response.data.content,
+                    id:Response.data.id,
                     status:UNDONE
                 }
             })
+            )
             setContent("")
         }
     }
 
     return(
         <div>
-            <input className="webflow-style-input" type="text" value={content} onChange={e => setContent(e.target.value)} required></input>&nbsp;&nbsp;&nbsp;
+            <input className="webflow-style-input" type="text" value={content} onChange={event => setContent(event.target.value)} required></input>
             <input className="button-74" type="submit" value="add" onClick={handleClick}/>
         </div>
     )

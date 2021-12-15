@@ -1,10 +1,13 @@
 import TodoGroup from "./TodoGroup";
+import '../styles/TodoItem.css';
 function TodoList(){
+
     return (
         <div>
-            <h2>Todo List</h2>
+            <h2>ALL Todo Items</h2>
             <TodoGroup/>
         </div>
+        
     );
 }
 
